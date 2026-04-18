@@ -9,7 +9,7 @@ export default function AnonymousTipsSection({ events }: AnonymousTipsSectionPro
   const filtered = events.filter((event) => event.type === 'anonymousTips');
   return (
     <EventGroupSection
-      title="Anonymous Tips"
+      title="Anonim İpuçları"
       accentClassName="bg-amber-100 text-amber-700"
       events={filtered}
     />

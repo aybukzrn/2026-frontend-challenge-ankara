@@ -20,15 +20,14 @@ export default function HeroCaseBanner({
 
       <div className="relative z-10">
         <p className="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-200/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-200">
-          CASE FILE
+          Olay Dosyası
         </p>
 
         <h1 className="mt-3 text-3xl font-extrabold tracking-wide text-white sm:text-4xl">
           PODO NEREDE?
         </h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-200 sm:text-base">
-          Saha notlari, ihbarlar ve gorulme kayitlari tek dosyada toplandi. Asagidaki akis, soruşturmanin
-          zaman eksenindeki izlerini gosterir.
+          Saha notları, ihbarlar ve görülme kayıtları tek dosyada toplandı. 
         </p>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -37,7 +36,7 @@ export default function HeroCaseBanner({
             <p className="text-2xl font-bold text-white">{totalEvents}</p>
           </div>
           <div className="rounded-lg border border-slate-500/60 bg-slate-900/45 p-3">
-            <p className="text-xs uppercase text-slate-300">Supheli Kisi</p>
+            <p className="text-xs uppercase text-slate-300">ŞÜPHELİ KİŞİLER</p>
             <p className="text-2xl font-bold text-white">{totalPeople}</p>
           </div>
           <div className="rounded-lg border border-slate-500/60 bg-slate-900/45 p-3">
@@ -47,7 +46,7 @@ export default function HeroCaseBanner({
         </div>
 
         <div className="mt-4 rounded-md border border-dashed border-slate-500/70 bg-slate-900/40 px-3 py-2 text-xs text-slate-200">
-          Zaman Araligi: <span className="font-semibold text-amber-200">{rangeStart}</span> -{' '}
+          Zaman Aralığı: <span className="font-semibold text-amber-200">{rangeStart}</span> -{' '}
           <span className="font-semibold text-amber-200">{rangeEnd}</span>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useInvestigationData } from '../hooks/useInvestigationData';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import HeroCaseBanner from '../components/HeroCaseBanner';
+import LocationPinBoard from '../components/LocationPinBoard';
 import AnonymousTipsSection from '../components/groups/AnonymousTipsSection';
 import CheckinsSection from '../components/groups/CheckinsSection';
 import MessagesSection from '../components/groups/MessagesSection';
@@ -67,7 +68,7 @@ export default function HomePage() {
 
         <div className="grid gap-6 md:grid-cols-2 mt-6">
           <section className="bg-white rounded-lg p-4 shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Kisiler ({entities.people.length})</h2>
+            <h2 className="text-lg font-semibold mb-3">Şüpheliler ({entities.people.length})</h2>
             <ul className="space-y-2 max-h-[420px] overflow-auto">
               {entities.people.map((person) => (
                 <li key={person}>
@@ -95,48 +96,12 @@ export default function HomePage() {
           </section>
         </div>
 
-        <section className="mt-6 bg-white rounded-lg p-4 shadow-sm">
-          <h2 className="text-lg font-semibold mb-3">Hikaye Özeti</h2>
-          <p className="text-slate-700">
-            Toplam <strong>{orderedTimeline.length}</strong> olay var. Aralik:
-            {' '}
-            <strong>{firstEvent ? formatDate(firstEvent.date) : '-'}</strong>
-            {' '}-&gt; <strong>{lastEvent ? formatDate(lastEvent.date) : '-'}</strong>.
-          </p>
-        </section>
+        <LocationPinBoard events={orderedTimeline} />
 
-        <section className="mt-6 bg-white rounded-lg p-4 shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Zaman Cizelgesi</h2>
-
-          {orderedTimeline.length === 0 ? (
-            <p className="text-slate-600">Gosterilecek olay bulunamadi.</p>
-          ) : (
-            <div className="relative pl-8">
-              <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-slate-300" />
-
-              <div className="space-y-4">
-                {orderedTimeline.map((event) => (
-                  <article key={event.id} className="relative rounded-lg border border-slate-200 bg-slate-50 p-4">
-                    <span className="absolute -left-[1.57rem] top-5 h-3.5 w-3.5 rounded-full border-2 border-white bg-slate-700" />
-
-                    <p className="text-xs uppercase tracking-wide text-slate-500 mb-1">{event.type}</p>
-                    <p className="text-sm font-semibold text-slate-900">{formatDate(event.date)}</p>
-                    <p className="text-sm text-slate-700 mt-1">
-                      <strong>{event.person}</strong>
-                      {' '}@ {event.location}
-                    </p>
-                    <p className="text-sm text-slate-600 mt-2">{event.details}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
 
         <section className="mt-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">Kaynak Grupları</h2>
-            <p className="text-sm text-slate-600">Her kaynak kendi bölümünde ayrı görünür.</p>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2">

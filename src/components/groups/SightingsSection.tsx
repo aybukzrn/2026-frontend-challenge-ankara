@@ -9,7 +9,7 @@ export default function SightingsSection({ events }: SightingsSectionProps) {
   const filtered = events.filter((event) => event.type === 'sightings');
   return (
     <EventGroupSection
-      title="Sightings"
+      title="Görüşler"
       accentClassName="bg-rose-100 text-rose-700"
       events={filtered}
     />

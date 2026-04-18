@@ -9,7 +9,7 @@ export default function MessagesSection({ events }: MessagesSectionProps) {
   const filtered = events.filter((event) => event.type === 'messages');
   return (
     <EventGroupSection
-      title="Messages"
+      title="Mesajlaşmalar"
       accentClassName="bg-sky-100 text-sky-700"
       events={filtered}
     />

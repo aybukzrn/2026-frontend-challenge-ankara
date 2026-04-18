@@ -9,7 +9,7 @@ export default function CheckinsSection({ events }: CheckinsSectionProps) {
   const filtered = events.filter((event) => event.type === 'checkins');
   return (
     <EventGroupSection
-      title="Checkins"
+      title="Kontroller"
       accentClassName="bg-emerald-100 text-emerald-700"
       events={filtered}
     />

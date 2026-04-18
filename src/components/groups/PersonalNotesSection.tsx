@@ -9,7 +9,7 @@ export default function PersonalNotesSection({ events }: PersonalNotesSectionPro
   const filtered = events.filter((event) => event.type === 'personalNotes');
   return (
     <EventGroupSection
-      title="Personal Notes"
+      title="Kişsel Notlar"
       accentClassName="bg-violet-100 text-violet-700"
       events={filtered}
     />
