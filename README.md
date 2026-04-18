@@ -15,34 +15,51 @@ Uygulama icinde:
 - Sol taraftaki şüpheli listesi ile kişi detay sayfasına geçilir.
 - Kişi detay sayfasinda ilgili tüm olaylar incelenir.
 
-## Getting Started
+## Localde Nasıl Çalıştırılır
 
-1. Repoyu klonlayin:
-   - `git clone https://github.com/aybukzrn/2026-frontend-challenge-ankara.git`
-2. Proje klasörüne girin:
-   - `cd 2026-frontend-challenge-ankara`
-3. Bağımlılıkları kurun:
-   - `npm install`
-4. Ortam değişkeni dosyası olusturun:
-   - Proje kokune `.env.local` dosyası ekleyin.
-   - İçine şu satırı yazın:
-     - `VITE_JOTFORM_API_KEY=YOUR_JOTFORM_API_KEY`
-5. Geliştirme sunucusunu başlatın:
-   - `npm run dev`
+### Gereksinimler
+- **Node.js** v18 veya üzeri ([nodejs.org](https://nodejs.org) adresinden indirilebilir)
+- **npm** (Node.js ile birlikte gelir)
+- Geçerli bir **Jotform API Key**
 
-## Test / Build
-Projeyi test ederken veya teslimden once dogrulama icin:
+### Kurulum Adımları
 
-- Tip kontrol + production build:
-  - `npm run build`
-- Build sonrasi onizleme:
-  - `npm run preview`
+```bash
+# 1. Repoyu klonlayın
+git clone https://github.com/aybukzrn/2026-frontend-challenge-ankara.git
 
-## Notlar
-- Jotform API key zorunludur; key yoksa veya limit dolmuşsa veri gelmeyebilir.
-- Farklı makinelerde aynı sonucu almak icin `npm install` sonrasi `.env.local` icine gecerli bir API key eklenmelidir.
-- Eger API limit hatasi (`429 API-Limit exceeded`) alinirse farkli bir Jotform key ile tekrar denenmelidir.
-- Proje Node.js'in guncel LTS surumuyle (onerilen: 18+) sorunsuz calisir.
+# 2. Proje klasörüne girin
+cd 2026-frontend-challenge-ankara
+
+# 3. Bağımlılıkları yükleyin
+npm install
+```
+
+### Ortam Değişkeni Ayarı
+
+Proje kökünde `.env.local` dosyası oluşturun ve Jotform API key'inizi ekleyin:
+
+```
+VITE_JOTFORM_API_KEY=YOUR_JOTFORM_API_KEY
+```
+
+### Geliştirme Sunucusunu Başlatma
+
+```bash
+npm run dev
+```
+
+Tarayıcıda `http://localhost:5173` adresini açın.
+
+### Build ve Önizleme
+
+```bash
+# Tip kontrol + production build
+npm run build
+
+# Build sonrası önizleme
+npm run preview
+```
 
 # 🚀 Challenge Duyurusu
 
