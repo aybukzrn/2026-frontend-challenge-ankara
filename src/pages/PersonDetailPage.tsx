@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import LocationSearchBar from '../components/LocationSearchBar';
 import { useInvestigationData } from '../hooks/useInvestigationData';
 
 const formatDate = (value: string): string => {
@@ -54,10 +56,15 @@ export default function PersonDetailPage() {
   const navigate = useNavigate();
   const { timeline, entities, loading, error, reload } = useInvestigationData();
   const decodedPerson = personId ? decodeURIComponent(personId) : '';
+  const [locationFilter, setLocationFilter] = useState('');
 
   const personEvents = timeline
     .filter((event) => event.person.toLowerCase() === decodedPerson.toLowerCase())
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  const filteredEvents = locationFilter
+    ? personEvents.filter((e) => e.location.toLowerCase() === locationFilter.toLowerCase())
+    : personEvents;
 
   if (loading) {
     return <div className="p-8 text-lg font-semibold">Kişi dosyası yükleniyor...</div>;
@@ -120,13 +127,27 @@ export default function PersonDetailPage() {
         </div>
 
         <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] rounded-lg p-4 sm:p-5 shadow-sm border border-slate-300 pb-5">
-          <h2 className="text-lg font-semibold mb-1">Dedektif Dosyası</h2>
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 className="text-lg font-semibold">Dedektif Dosyası</h2>
+            <LocationSearchBar
+              locations={entities.locations}
+              value={locationFilter}
+              onChange={setLocationFilter}
+            />
+          </div>
+          {locationFilter && (
+            <p className="text-xs text-slate-500 mb-3">
+              <strong>{filteredEvents.length}</strong> kayıt gösteriliyor — konum: <span className="font-semibold text-indigo-700">{locationFilter}</span>
+            </p>
+          )}
 
-          {personEvents.length === 0 ? (
-            <p className="text-slate-600">Bu kişiye ait kayıt bulunamadı.</p>
+          {filteredEvents.length === 0 ? (
+            <p className="text-slate-600">
+              {locationFilter ? `"${locationFilter}" konumuna ait kayıt bulunamadı.` : 'Bu kişiye ait kayıt bulunamadı.'}
+            </p>
           ) : (
             <div className="space-y-4">
-              {personEvents.map((event, index) => {
+              {filteredEvents.map((event, index) => {
                 const typeLabel = sourceTypeLabel[event.type] ?? event.type;
                 const typeTone = sourceTypeTone[event.type] ?? 'bg-slate-100 text-slate-800 border-slate-300';
                 const sourceDataEntries = Object.entries(event.sourceRecord.data);
