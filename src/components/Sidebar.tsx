@@ -83,7 +83,7 @@ export default function Sidebar({ people, selectedPerson, onSelectPerson }: Side
 
       {isOpen && (
         <div className="px-3 py-3 border-t border-slate-700/80 text-[11px] text-slate-400">
-          Soruşturma paneli: bir supheli secerek dosyasini ac.
+          Soruşturma Paneli: Bir şüpheli seçerek dosyasını aç.
         </div>
       )}
     </aside>
