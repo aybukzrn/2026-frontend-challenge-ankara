@@ -51,13 +51,31 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex">
-      <Sidebar
-        people={entities.people}
-        onSelectPerson={(person) => navigate(`/person/${encodeURIComponent(person)}`)}
-      />
+    <div className="min-h-screen bg-slate-100 flex flex-col lg:flex-row">
+      <div className="hidden lg:block lg:shrink-0">
+        <Sidebar
+          people={entities.people}
+          onSelectPerson={(person) => navigate(`/person/${encodeURIComponent(person)}`)}
+        />
+      </div>
 
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-4 sm:p-6">
+        <section className="lg:hidden mb-4 bg-white rounded-lg p-3 shadow-sm">
+          <h2 className="text-sm font-semibold text-slate-800 mb-2">Hızlı Şüpheli Geçişi</h2>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {entities.people.map((person) => (
+              <button
+                key={person}
+                type="button"
+                onClick={() => navigate(`/person/${encodeURIComponent(person)}`)}
+                className="shrink-0 rounded-full border border-slate-300 bg-slate-50 px-3 py-1.5 text-sm text-slate-700"
+              >
+                {person}
+              </button>
+            ))}
+          </div>
+        </section>
+
         <HeroCaseBanner
           totalEvents={orderedTimeline.length}
           totalPeople={entities.people.length}
@@ -66,7 +84,7 @@ export default function HomePage() {
           rangeEnd={lastEvent ? formatDate(lastEvent.date) : '-'}
         />
 
-        <div className="grid gap-6 md:grid-cols-2 mt-6">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mt-6">
           <section className="bg-white rounded-lg p-4 shadow-sm">
             <h2 className="text-lg font-semibold mb-3">Şüpheliler ({entities.people.length})</h2>
             <ul className="space-y-2 max-h-[420px] overflow-auto">
@@ -99,12 +117,12 @@ export default function HomePage() {
         <LocationPinBoard events={orderedTimeline} />
 
 
-        <section className="mt-6">
+        <section className="mt-6 pb-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">Kaynak Grupları</h2>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-2">
             <CheckinsSection events={orderedTimeline} />
             <SightingsSection events={orderedTimeline} />
             <MessagesSection events={orderedTimeline} />

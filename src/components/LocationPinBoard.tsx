@@ -163,7 +163,7 @@ export default function LocationPinBoard({ events }: LocationPinBoardProps) {
         </div>
 
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 max-h-[500px] overflow-auto">
-          <p className="text-sm font-semibold text-slate-800 mb-2">Baglanti Defteri</p>
+          <p className="text-sm font-semibold text-slate-800 mb-2">Bağlantı Defteri</p>
           <ul className="space-y-2">
             {points.map((point) => (
               <li key={`${point.id}-legend`} className="rounded border border-slate-200 bg-white p-2">

@@ -79,25 +79,47 @@ export default function PersonDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#dbe4ee_0%,#f1f5f9_45%,#e2e8f0_100%)] flex">
-      <Sidebar
-        people={entities.people}
-        selectedPerson={decodedPerson}
-        onSelectPerson={(person) => navigate(`/person/${encodeURIComponent(person)}`)}
-      />
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#dbe4ee_0%,#f1f5f9_45%,#e2e8f0_100%)] flex flex-col lg:flex-row">
+      <div className="hidden lg:block lg:shrink-0">
+        <Sidebar
+          people={entities.people}
+          selectedPerson={decodedPerson}
+          onSelectPerson={(person) => navigate(`/person/${encodeURIComponent(person)}`)}
+        />
+      </div>
 
-      <main className="flex-1 p-6">
-        <div className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] rounded-lg p-5 shadow-sm mb-6 border border-slate-300">
+      <main className="flex-1 p-4 sm:p-6">
+        <section className="lg:hidden mb-4 bg-white rounded-lg p-3 shadow-sm">
+          <h2 className="text-sm font-semibold text-slate-800 mb-2">Hızlı Şüpheli Geçişi</h2>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {entities.people.map((person) => (
+              <button
+                key={person}
+                type="button"
+                onClick={() => navigate(`/person/${encodeURIComponent(person)}`)}
+                className={`shrink-0 rounded-full border px-3 py-1.5 text-sm ${
+                  person === decodedPerson
+                    ? 'border-indigo-300 bg-indigo-50 text-indigo-700'
+                    : 'border-slate-300 bg-slate-50 text-slate-700'
+                }`}
+              >
+                {person}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <div className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] rounded-lg p-4 sm:p-5 shadow-sm mb-6 border border-slate-300">
           <Link className="text-sm text-koyu_m hover:underline" to="/">
             ← Anasayfaya Dön
           </Link>
-          <h1 className="text-2xl font-bold text-slate-900 mt-2">{decodedPerson || 'Kisi secilmedi'}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 mt-2">{decodedPerson || 'Kisi secilmedi'}</h1>
           <p className="text-slate-600 mt-1">
             Şüpheliye ait olaylar ve bilgiler aşağıda listelenmiştir. Toplam <strong>{personEvents.length}</strong> kayıt bulunmuştur.
           </p>
         </div>
 
-        <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] rounded-lg p-5 shadow-sm border border-slate-300">
+        <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] rounded-lg p-4 sm:p-5 shadow-sm border border-slate-300 pb-5">
           <h2 className="text-lg font-semibold mb-1">Dedektif Dosyası</h2>
 
           {personEvents.length === 0 ? (
@@ -128,7 +150,7 @@ export default function PersonDetailPage() {
                           {confidenceBadge.label}
                         </span>
                       </div>
-                      <span className="text-xs text-slate-600">Olay Tarihi: {formatDate(event.date)}</span>
+                      <span className="text-xs text-slate-600 w-full sm:w-auto">Olay Tarihi: {formatDate(event.date)}</span>
                     </div>
 
                     <div className="grid gap-3 sm:grid-cols-2 mb-3">
