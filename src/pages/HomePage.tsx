@@ -84,35 +84,7 @@ export default function HomePage() {
           rangeEnd={lastEvent ? formatDate(lastEvent.date) : '-'}
         />
 
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mt-6">
-          <section className="bg-white rounded-lg p-4 shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Şüpheliler ({entities.people.length})</h2>
-            <ul className="space-y-2 max-h-[420px] overflow-auto">
-              {entities.people.map((person) => (
-                <li key={person}>
-                  <button
-                    type="button"
-                    onClick={() => navigate(`/person/${encodeURIComponent(person)}`)}
-                    className="w-full text-left px-3 py-2 rounded bg-slate-50 text-slate-800 hover:bg-slate-200"
-                  >
-                    {person}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="bg-white rounded-lg p-4 shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Lokasyonlar ({entities.locations.length})</h2>
-            <ul className="space-y-2 max-h-[420px] overflow-auto">
-              {entities.locations.map((location) => (
-                <li key={location} className="px-3 py-2 rounded bg-slate-50 text-slate-800">
-                  {location}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        
 
         <LocationPinBoard events={orderedTimeline} />
 

@@ -6,7 +6,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ people, selectedPerson, onSelectPerson }: SidebarProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <aside

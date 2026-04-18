@@ -1,12 +1,11 @@
 # Jotform Frontend Challenge Project
 
 ## User Information
-Please fill in your information after forking this repository:
 
 - **Name**: [Aybüke Zeren]
 
 ## Project Description
-Bu proje, Jotform API'den gelen farkli kaynaklardaki (Checkins, Messages, Sightings, Personal Notes, Anonymous Tips) kayitlari tek bir sorusturma panelinde birlestiren bir React + TypeScript uygulamasidir.
+Bu proje, Jotform API'den gelen farkli kaynaklardaki (Checkins, Messages, Sightings, Personal Notes, Anonymous Tips) kayıtlari tek bir sorusturma panelinde birlestiren bir React + TypeScript uygulamasıdır.
 
 Uygulama icinde:
 - Tüm formlardan veri paralel olarak çekilir ve normalize edilir.
@@ -19,7 +18,7 @@ Uygulama icinde:
 ## Getting Started
 
 1. Repoyu klonlayin:
-   - `git clone https://github.com/cemjotform/2026-frontend-challenge-ankara.git`
+   - `git clone https://github.com/aybukzrn/2026-frontend-challenge-ankara.git`
 2. Proje klasörüne girin:
    - `cd 2026-frontend-challenge-ankara`
 3. Bağımlılıkları kurun:
